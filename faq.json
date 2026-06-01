@@ -1,0 +1,10 @@
+[
+  {"id":"faq-01","question":"Thời gian làm việc tiêu chuẩn là mấy giờ/ngày?","answer":"8 giờ/ngày, 5 ngày/tuần. Khung giờ có thể linh hoạt theo đơn vị.","tags":["chung","thoigian"]},
+  {"id":"faq-02","question":"Nghỉ phép năm được bao nhiêu ngày?","answer":"Demo: 12 ngày/năm cho nhân viên chính thức. Thực tế tuỳ quy định đơn vị.","tags":["nghiphep"]},
+  {"id":"faq-03","question":"Xin nghỉ phép năm như thế nào?","answer":"Gửi yêu cầu theo quy trình nội bộ và chờ phê duyệt quản lý.","tags":["nghiphep","quytrinh"]},
+  {"id":"faq-04","question":"Nghỉ ốm có cần giấy tờ không?","answer":"Demo: nghỉ từ 2 ngày trở lên cần giấy khám/bệnh viện theo quy định.","tags":["nghiom"]},
+  {"id":"faq-05","question":"Đi làm muộn/về sớm xử lý thế nào?","answer":"Cần báo quản lý trực tiếp; có thể bị nhắc nhở/xử lý theo quy chế nếu lặp lại.","tags":["kyluat"]},
+  {"id":"faq-06","question":"Khi nào được làm việc từ xa (WFH)?","answer":"WFH theo phê duyệt quản lý và yêu cầu dự án; cần tuân thủ an toàn thông tin.","tags":["wfh"]},
+  {"id":"faq-07","question":"OT (làm thêm) được tính như thế nào?","answer":"OT cần đăng ký/phê duyệt trước; cách tính theo luật và quy định nội bộ (demo).","tags":["ot"]},
+  {"id":"faq-08","question":"Onboarding nhân viên mới gồm những bước gì?","answer":"Nhận hướng dẫn, tài khoản, đào tạo, bàn giao thiết bị, giới thiệu team/dự án.","tags":["onboarding"]}
+]
