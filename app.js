@@ -85,6 +85,7 @@ function renderAlts(alts) {
 
 async function logUnanswered(question, best) {
   const url = `${LOG_ENDPOINT}?key=${encodeURIComponent(LOG_KEY)}`;
+
   const payload = {
     question,
     bestScore: best?.score ?? '',
@@ -93,9 +94,24 @@ async function logUnanswered(question, best) {
     source: LOG_SOURCE,
     userAgent: navigator.userAgent
   };
+
   try {
-    await fetch(url, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(payload) });
-  } catch(e){}
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const text = await res.text();
+
+    console.log('LOG STATUS =', res.status);
+    console.log('LOG BODY =', text);
+
+  } catch (e) {
+    console.error('LOG ERROR =', e);
+  }
 }
 
 async function main() {
