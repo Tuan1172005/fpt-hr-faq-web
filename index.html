@@ -1,72 +1,260 @@
+Dưới đây là phiên bản giao diện đã được thiết kế lại toàn bộ để phù hợp với chuẩn phong cách doanh nghiệp (Corporate UI) của FPT dành cho đơn vị GST.
+
+**Các thay đổi chính bao gồm:**
+
+* **Màu sắc thương hiệu:** Sử dụng hệ màu chuẩn của FPT (Cam, Xanh lá, Xanh dương đậm) kết hợp giao diện sáng (Light Mode) sạch sẽ, chuyên nghiệp thay vì màu tối gradient.
+* **Văn bản (Copywriting):** Thay thế các cụm từ không chuyên nghiệp (như *"demo"*, *"em muốn..."*, *"tự ghi nhận"*) thành ngôn ngữ chuẩn mực doanh nghiệp (VD: *"Quy trình đăng ký làm việc từ xa"*).
+* **Bảo toàn tính năng:** Toàn bộ các thẻ `id` và cấu trúc cần thiết để liên kết với `config.js` và `app.js` đều được giữ nguyên 100%.
+
+```html
 <!doctype html>
 <html lang="vi">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FPT HR FAQ</title>
+  <title>FPT GST HR Portal</title>
   <style>
-    :root{
-      --card:#121a33; --border:#22305c; --text:#e7eaf3;
-      --muted:rgba(231,234,243,.75);
-      --fpt-orange:#ff6a00; --fpt-blue:#0a66c2;
+    :root {
+      /* Bảng màu chuẩn FPT */
+      --fpt-orange: #F37021;
+      --fpt-orange-hover: #D95C15;
+      --fpt-blue: #14284B;
+      --fpt-green: #48A727;
+      
+      /* Màu sắc UI */
+      --bg-color: #F4F6F9;
+      --card-bg: #FFFFFF;
+      --text-main: #333333;
+      --text-muted: #6B7280;
+      --border-color: #E5E7EB;
     }
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto;margin:0;
-      background:linear-gradient(180deg,#070b18 0%, #0b1020 100%);color:var(--text)}
-    .wrap{max-width:920px;margin:0 auto;padding:18px}
-    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
-    .logo{width:34px;height:34px;border-radius:10px;
-      background:conic-gradient(from 180deg, var(--fpt-orange), #ffb000, #00c2ff, var(--fpt-blue), var(--fpt-orange));
-      box-shadow:0 8px 18px rgba(255,106,0,.15);}
-    .badge{font-size:12px;color:#111;background:#ffd9bf;border-radius:999px;padding:5px 10px;font-weight:800}
-    .card{background:rgba(18,26,51,.92);border:1px solid var(--border);border-radius:16px;padding:14px}
-    .hint{color:var(--muted);font-size:12px;line-height:1.4}
-    textarea{width:100%;min-height:84px;border-radius:14px;border:1px solid var(--border);
-      background:#0f1730;color:var(--text);padding:12px;font-size:15px;outline:none}
-    textarea:focus{border-color:rgba(255,106,0,.7);box-shadow:0 0 0 3px rgba(255,106,0,.15)}
-    .row{display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap}
-    button{border:0;border-radius:12px;padding:10px 14px;font-weight:900;cursor:pointer}
-    #askBtn{background:linear-gradient(90deg,var(--fpt-orange),#ff9800);color:#111}
-    .status{color:var(--muted);font-size:12px}
-    .sectionTitle{margin:14px 0 6px 0;font-size:14px}
-    pre{white-space:pre-wrap;word-wrap:break-word;margin:0;background:#0f1730;border:1px solid var(--border);
-      border-radius:14px;padding:12px}
-    .pill{display:inline-block;padding:3px 8px;border:1px solid var(--border);
-      border-radius:999px;margin-right:8px;font-size:12px;color:var(--muted)}
-    .alt{padding:8px 0;border-bottom:1px dashed rgba(34,48,92,.6);color:var(--muted);font-size:13px}
-    .alt:last-child{border-bottom:none}
+    
+    body {
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+    
+    .wrap {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    /* Topbar & Branding */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    /* CSS FPT Logo 3 vạch */
+    .logo-wrap {
+      display: flex;
+      gap: 4px;
+    }
+    .logo-part {
+      width: 12px;
+      height: 28px;
+      border-radius: 2px;
+    }
+    .logo-1 { background-color: var(--fpt-orange); }
+    .logo-2 { background-color: var(--fpt-green); }
+    .logo-3 { background-color: var(--fpt-blue); }
+
+    .brand-text-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--fpt-blue);
+      margin-bottom: 2px;
+    }
+    .brand-desc {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    
+    .badge {
+      font-size: 12px;
+      color: var(--fpt-blue);
+      background-color: #E8F0FE;
+      border: 1px solid #D2E3FC;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Card Container */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    }
+    
+    /* Inputs & Buttons */
+    .input-group {
+      margin-bottom: 16px;
+    }
+    textarea {
+      width: 100%;
+      min-height: 90px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: #FAFAFA;
+      color: var(--text-main);
+      padding: 16px;
+      font-size: 15px;
+      outline: none;
+      resize: vertical;
+      box-sizing: border-box;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    textarea:focus {
+      border-color: var(--fpt-orange);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(243, 112, 33, 0.15);
+    }
+    
+    .row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    button {
+      border: none;
+      border-radius: 6px;
+      padding: 10px 24px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    #askBtn {
+      background-color: var(--fpt-orange);
+      color: #FFFFFF;
+    }
+    #askBtn:hover {
+      background-color: var(--fpt-orange-hover);
+    }
+    .status {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    
+    /* Sections & Results */
+    .sectionTitle {
+      margin: 12px 0 12px 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--fpt-blue);
+      border-bottom: 2px solid #F3F4F6;
+      padding-bottom: 8px;
+    }
+    .hint {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin: 0 0 24px 0;
+      background: #F9FAFB;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+    
+    /* Pills & Alternatives */
+    .pill {
+      display: inline-block;
+      padding: 4px 10px;
+      background-color: #F3F4F6;
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      margin-right: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .alt {
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--border-color);
+      color: var(--text-muted);
+      font-size: 14px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .alt:hover {
+      color: var(--fpt-orange);
+    }
+    .alt:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="topbar">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <div>FPT HR FAQ</div>
-          <div class="hint">Tra cứu nhanh (demo). Không có câu trả lời phù hợp thì tự ghi nhận vào Google Sheet.</div>
+        <!-- Logo CSS đại diện 3 màu chuẩn FPT -->
+        <div class="logo-wrap" aria-hidden="true">
+          <div class="logo-part logo-1"></div>
+          <div class="logo-part logo-2"></div>
+          <div class="logo-part logo-3"></div>
+        </div>
+        <div class="brand-text-container">
+          <div class="brand-title">FPT GST HR Portal</div>
+          <div class="brand-desc">Hệ thống hỗ trợ và giải đáp thắc mắc Nhân sự</div>
         </div>
       </div>
-      <div class="badge">FREE • No GPT</div>
+      <div class="badge">Nội bộ GST</div>
     </div>
 
     <div class="card">
-      <textarea id="q" placeholder="Nhập câu hỏi... (VD: em muốn WFH thì sao?)"></textarea>
+      <div class="input-group">
+        <textarea id="q" placeholder="Nhập câu hỏi của bạn... (VD: Quy trình đăng ký làm việc từ xa (WFH) như thế nào?)"></textarea>
+      </div>
+      
       <div class="row">
-        <button id="askBtn">Tra cứu</button>
+        <button id="askBtn">Tra cứu thông tin</button>
         <span id="st" class="status"></span>
       </div>
 
-      <div class="sectionTitle">Trả lời</div>
+      <div class="sectionTitle">Kết quả tra cứu</div>
       <div id="meta" class="hint"></div>
       <pre id="a"></pre>
 
-      <div class="sectionTitle">Gợi ý kết quả gần nhất</div>
+      <div class="sectionTitle">Các câu hỏi liên quan</div>
       <div id="alts"></div>
     </div>
   </div>
 
+  <!-- Scripts gốc được giữ nguyên để không làm ảnh hưởng tính năng -->
   <script src="./config.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>
+
+```
