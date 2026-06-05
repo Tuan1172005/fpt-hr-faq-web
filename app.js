@@ -84,9 +84,12 @@ function renderAlts(alts) {
 }
 
 async function logUnanswered(question, best) {
-  const url = `${LOG_ENDPOINT}?key=${encodeURIComponent(LOG_KEY)}`;
+  // FIX: Chỉ gọi Endpoint gốc, không truyền key qua URL param để tránh bị Google xóa mất khi Redirect
+  const url = LOG_ENDPOINT;
 
+  // FIX: Đóng gói key an toàn vào trực tiếp JSON Body
   const payload = {
+    key: LOG_KEY, 
     question,
     bestScore: best?.score ?? '',
     bestId: best?.it?.id ?? '',
